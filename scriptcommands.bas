@@ -5192,14 +5192,14 @@ SUB script_commands(byval cmdid as integer)
   IF valid hero caterpillar_rank(retvals(0)) THEN
    DIM fx as Integer = herotx(retvals(0))
    DIM fy as Integer = heroty(retvals(0))
-   wrapaheadxy, fx, fy, 1, 1
+   wrapaheadxy, fx, fy, herodir(0), 1, 1
    scriptret = fx
   END IF 
  CASE 754'--forward y
   IF valid hero caterpillar_rank(retvals(0)) THEN
    DIM fx as Integer = herotx(retvals(0))
    DIM fy as Integer = heroty(retvals(0))
-   wrapaheadxy, fx, fy, 1, 1
+   wrapaheadxy, fx, fy, herodir(0), 1, 1
    scriptret = fy
   END IF 
  
