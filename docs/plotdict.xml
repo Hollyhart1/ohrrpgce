@@ -1659,6 +1659,26 @@ resume player</example>
 			<shortname>hero pixel Y</shortname>
 			<description>Returns the hero&apos;s Y position on the map in pixels. To find the hero&apos;s position in tiles, use the <ref>heroy</ref> function instead.</description>
 		</command>
+		<command id="Fowardx">
+			<canon>Forward X (who)</canon>
+			<shortname>Forward X</shortname>
+			<description>Returns the specified hero&apos;s X position in tiles. Note that the position is in front of the hero.</description>
+		</command>
+		<command id="Forwardy">
+			<canon>Forward Y (who)</canon>
+			<shortname>Forward Y</shortname>
+			<description>Returns the specified hero&apos;s y position in tiles. Note that the position is in front of the hero.</description>
+			<example>#This script will check if npc 1 is up two tiles in front of the hero.
+#Then it will walk the npc 1 to the hero. 
+#showing a textbox, as if you activated npc 1
+suspend player
+if (npc at spot (1, forward X(me), forward Y(me) -- 2)) then(
+   Walk npc (1, down, 2)
+   show text box (2)
+   wait for text box
+)
+resume player</example>
+		</command>
 		<command id="heroz">
 			<canon>hero Z (who)</canon>
 			<shortname>hero Z</shortname>
