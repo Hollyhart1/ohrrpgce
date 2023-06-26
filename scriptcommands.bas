@@ -1473,7 +1473,19 @@ SUB script_commands(byval cmdid as integer)
  CASE 44'--hero y
   IF valid_hero_caterpillar_rank(retvals(0)) THEN
    scriptret = heroty(retvals(0))
-  END IF
+  END If
+  
+ Dim as Integer x = -100, y = -100
+ wrapaheadxy x, y, 100, 100  
+  
+ CASE 45'--forward x
+  IF valid hero caterpillar_rank(retvals(0)) THEN
+   scriptret = herotx(retvals(0)) AND scriptret = herodir(retvals(0))
+  END IF 
+ CASE 46'--forward y
+  IF valid hero caterpillar_rank(retvals(0)) THEN
+   scriptret = heroty(retvals(0)) AND scriptret = herodir(retvals(0))
+  END IF 
  CASE 47'--suspend obstruction
   setbit gen(), genSuspendBits, suspendobstruction, 1
  CASE 48'--resume obstruction
