@@ -5193,14 +5193,14 @@ SUB script_commands(byval cmdid as integer)
  	 Dim fy As Integer = Hero Y(0)
  	 wrapaheadxy, FX, FY, 1, 1
   IF valid hero caterpillar_rank(retvals(0)) THEN
-   scriptret = herotx(retvals(0)) AND scriptret = herodir(retvals(0))
+   scriptret = fx
   END IF 
  	CASE 754'--forward y
  	 Dim fx As Integer = Hero X(0)
  	 Dim fy As Integer = Hero Y(0)
  	 wrapaheadxy, FX, FY, 1, 1
   IF valid hero caterpillar_rank(retvals(0)) THEN
-   scriptret = heroty(retvals(0)) AND scriptret = herodir(retvals(0))
+   scriptret = fy
   END IF 
  
  
