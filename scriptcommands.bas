@@ -1475,8 +1475,9 @@ SUB script_commands(byval cmdid as integer)
    scriptret = heroty(retvals(0))
   END If
   
- Dim as Integer x = -100, y = -100
- wrapaheadxy x, y, 100, 100  
+ Dim FX As Integer = Hero X(0)
+ Dim FY As Integer = Hero Y(0)
+ wrapaheadxy, FX, FY, -100, -100
   
  CASE 45'--forward x
   IF valid hero caterpillar_rank(retvals(0)) THEN
