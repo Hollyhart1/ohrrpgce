@@ -5189,16 +5189,16 @@ SUB script_commands(byval cmdid as integer)
  CASE 752 '--walkabouts are suspended
   scriptret = readbit(gen(), genSuspendBits, suspendwalkabouts)
  	CASE 753'--forward x
- 	 Dim fx As Integer = Hero X(0)
- 	 Dim fy As Integer = Hero Y(0)
- 	 wrapaheadxy, FX, FY, 1, 1
+ 	 Dim fx As Integer = herotx(retvals(0))
+ 	 Dim fy As Integer = heroty(retvals(0))
+ 	 wrapaheadxy, fx, fy, 1, 1
   IF valid hero caterpillar_rank(retvals(0)) THEN
    scriptret = fx
   END IF 
  	CASE 754'--forward y
- 	 Dim fx As Integer = Hero X(0)
- 	 Dim fy As Integer = Hero Y(0)
- 	 wrapaheadxy, FX, FY, 1, 1
+ 	 Dim fx As Integer = herotx(retvals(0))
+ 	 Dim fy As Integer = heroty(retvals(0))
+ 	 wrapaheadxy, fx, fy, 1, 1
   IF valid hero caterpillar_rank(retvals(0)) THEN
    scriptret = fy
   END IF 
