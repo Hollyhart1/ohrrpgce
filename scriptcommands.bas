@@ -1474,20 +1474,7 @@ SUB script_commands(byval cmdid as integer)
   IF valid_hero_caterpillar_rank(retvals(0)) THEN
    scriptret = heroty(retvals(0))
   END If
-  
- Dim FX As Integer = Hero X(0)
- Dim FY As Integer = Hero Y(0)
- wrapaheadxy, FX, FY, -100, -100
-  
- CASE 45'--forward x
-  IF valid hero caterpillar_rank(retvals(0)) THEN
-   scriptret = herotx(retvals(0)) AND scriptret = herodir(retvals(0))
-  END IF 
- CASE 46'--forward y
-  IF valid hero caterpillar_rank(retvals(0)) THEN
-   scriptret = heroty(retvals(0)) AND scriptret = herodir(retvals(0))
-  END IF 
- CASE 47'--suspend obstruction
+ 	CASE 47'--suspend obstruction
   setbit gen(), genSuspendBits, suspendobstruction, 1
  CASE 48'--resume obstruction
   setbit gen(), genSuspendBits, suspendobstruction, 0
@@ -5201,7 +5188,22 @@ SUB script_commands(byval cmdid as integer)
   setbit gen(), genSuspendBits, suspendwalkabouts, 0
  CASE 752 '--walkabouts are suspended
   scriptret = readbit(gen(), genSuspendBits, suspendwalkabouts)
-
+ 	CASE 753'--forward x
+ 	 Dim fx As Integer = Hero X(0)
+ 	 Dim fy As Integer = Hero Y(0)
+ 	 wrapaheadxy, FX, FY, 1, 1
+  IF valid hero caterpillar_rank(retvals(0)) THEN
+   scriptret = herotx(retvals(0)) AND scriptret = herodir(retvals(0))
+  END IF 
+ 	CASE 754'--forward y
+ 	 Dim fx As Integer = Hero X(0)
+ 	 Dim fy As Integer = Hero Y(0)
+ 	 wrapaheadxy, FX, FY, 1, 1
+  IF valid hero caterpillar_rank(retvals(0)) THEN
+   scriptret = heroty(retvals(0)) AND scriptret = herodir(retvals(0))
+  END IF 
+ 
+ 
  CASE ELSE
   'We also check the HSP header at load time to check there aren't unsupported commands
   scripterr "Unsupported script command " & cmdid & " " & commandname(cmdid) & ". " _
