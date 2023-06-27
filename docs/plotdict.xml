@@ -1672,8 +1672,7 @@ resume player</example>
 #Then it will walk the npc 1 to the hero. 
 #showing a textbox, as if you activated npc 1
 suspend player
-if (npc at spot (1, forward X(me), forward Y(me) -- 2)) then(
-   Walk npc (1, down, 2)
+if (npc at spot (1, forward X(me), forward Y(me))) then(
    show text box (2)
    wait for text box
 )
