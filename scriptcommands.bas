@@ -5189,14 +5189,14 @@ SUB script_commands(byval cmdid as integer)
  CASE 752 '--walkabouts are suspended
   scriptret = readbit(gen(), genSuspendBits, suspendwalkabouts)
  CASE 753'--forward x
-  IF valid hero caterpillar_rank(retvals(0)) THEN
+  IF valid_hero_caterpillar_rank(retvals(0)) THEN
    DIM fx as Integer = herotx(retvals(0))
    DIM fy as Integer = heroty(retvals(0))
    wrapaheadxy, fx, fy, herodir(retvals(0)), 1, 1
    scriptret = fx
   END IF 
  CASE 754'--forward y
-  IF valid hero caterpillar_rank(retvals(0)) THEN
+  IF valid_hero_caterpillar_rank(retvals(0)) THEN
    DIM fx as Integer = herotx(retvals(0))
    DIM fy as Integer = heroty(retvals(0))
    wrapaheadxy, fx, fy, herodir(retvals(0)), 1, 1
