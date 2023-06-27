@@ -1668,7 +1668,7 @@ resume player</example>
 			<canon>Forward Y (who)</canon>
 			<shortname>Forward Y</shortname>
 			<description>Returns the specified hero&apos;s y position in tiles. Note that the position is in front of the hero.</description>
-			<example>#This script will check if npc 1 is up two tiles in front of the hero.
+			<example>#This script will check if npc 1 is in front of the hero.
 #Then it will walk the npc 1 to the hero. 
 #showing a textbox, as if you activated npc 1
 suspend player
