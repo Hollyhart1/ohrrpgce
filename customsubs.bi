@@ -96,4 +96,6 @@ DECLARE FUNCTION custom_setoption(opt as string, arg as string) as integer
 
 DECLARE SUB preview_menu(menu as MenuDef, mstate as MenuState, viewport_page as integer, destpage as integer = -1)
 
+DECLARE FUNCTION extra_number (it as integer, hidden as integer, offbyone as integer) as string
+
 #endif

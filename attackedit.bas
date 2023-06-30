@@ -160,6 +160,10 @@ CONST AtkChangeDefector = 161
 CONST AtkChangeFlipped = 162
 CONST AtkSpawnEnemy = 163
 CONST AtkChainOnFailOrMissBit = 164
+CONST AtkMiscAct = 165
+CONST AtkExtraAct0 = 166
+CONST AtkExtraAct1 = 167
+CONST AtkExtraAct2 = 168
 
 'Next menu item is 165 (remember to update MnuItems)
 
@@ -248,6 +252,9 @@ CONST AtkDatChangeTurncoat = 349
 CONST AtkDatChangeDefector = 350
 CONST AtkDatChangeFlipped = 351
 CONST AtkDatSpawnEnemy = 352
+CONST AtkDatExtra0 = 353
+CONST AtkDatExtra1 = 354
+CONST AtkDatExtra2 = 355
 
 'anything past this requires expanding the data
 
@@ -407,19 +414,18 @@ DIM recbuf(40 + curbinsize(binATTACK) \ 2 - 1) as integer '--stores the combined
 STATIC copy_recbuf(40 + curbinsize(binATTACK) \ 2 - 1) as integer
 STATIC have_copy as bool
 
-CONST MnuItems = 164
+CONST MnuItems = 172
 DIM menu(MnuItems) as string
 DIM menutype(MnuItems) as integer
 DIM menuoff(MnuItems) as integer
 DIM menulimits(MnuItems) as integer
 DIM menucapoff(MnuItems) as integer
-
 '----------------------------------------------------------
 
 DIM capindex as integer = 0
 REDIM caption(-1 TO -1) as string
-DIM max(51) as integer
-DIM min(51) as integer
+DIM max(54) as integer
+DIM min(54) as integer
 
 'Limit(0) is not used
 
@@ -810,6 +816,7 @@ CONST AtkLimSpawnEnemy = 51
 max(AtkLimSpawnEnemy) = gen(genMaxEnemy) + 1 'Must be updated!
 min(AtkLimSpawnEnemy) = 0
 
+
 'next limit is 51 (remember to update the max() and min() dims)
 
 '----------------------------------------------------------------------
@@ -1162,6 +1169,9 @@ menulimits(AtkLearnSoundEffect) = AtkLimSFX
 menu(AtkTransmogAct) = "Transmogrification..."
 menutype(AtkTransmogAct) = 1
 
+menu(AtkMiscAct) = "Misc..."
+menutype(AtkMiscAct) = 1
+
 menu(AtkTransmogEnemy) = "Enemy target becomes:"
 menutype(AtkTransmogEnemy) = 9 'enemy name
 menuoff(AtkTransmogEnemy) = AtkDatTransmogEnemy
@@ -1273,6 +1283,20 @@ menutype(AtkSpawnEnemy) = 9 'enemy name
 menuoff(AtkSpawnEnemy) = AtkDatSpawnEnemy
 menulimits(AtkSpawnEnemy) = AtkLimSpawnEnemy
 
+menu(AtkExtraAct0) = "Extra Data 0:"
+menutype(AtkExtraAct0) = 0
+menuoff(AtkExtraAct0) = AtkExtraAct0
+menulimits(AtkExtraAct0) = AtkLimInt
+
+menu(AtkExtraAct1) = "Extra Data 1:"
+menutype(AtkExtraAct1) = 0
+menuoff(AtkExtraAct1) = AtkExtraAct1
+menulimits(AtkExtraAct1) = AtkLimInt
+
+menu(AtkExtraAct2) = "Extra Data 2:"
+menutype(AtkExtraAct2) = 0
+menuoff(AtkExtraAct2) = AtkExtraAct2
+menulimits(AtkExtraAct2) = AtkLimInt
 
 '----------------------------------------------------------
 '--menu structure
@@ -1284,7 +1308,7 @@ state.autosize_ignore_pixels = 16
 DIM menuopts as MenuOptions
 menuopts.fullscreen_scrollbar = YES
 
-DIM mainMenu(15) as integer
+DIM mainMenu(16) as integer
 mainMenu(0) = AtkBackAct
 mainMenu(1) = AtkChooseAct
 mainMenu(2) = AtkName
@@ -1301,6 +1325,7 @@ mainMenu(12) = AtkElemBitAct
 mainMenu(13) = AtkElementFailAct
 mainMenu(14) = AtkTagAct
 mainMenu(15) = AtkTransmogAct
+mainMenu(16) = AtkMiscAct
 
 DIM targMenu(5) as integer
 targMenu(0) = AtkBackAct
@@ -1380,6 +1405,11 @@ effectsMenu(2) = AtkChangeTurncoat
 effectsMenu(3) = AtkChangeDefector
 effectsMenu(4) = AtkChangeFlipped
 effectsMenu(5) = AtkSpawnEnemy
+
+DIM MiscMenu(2) as integer
+MiscMenu(0) = AtkExtraAct0
+Miscmenu(1) = AtkExtraAct1
+Miscmenu(2) = AtkExtraAct2
 
 '--Create the box that holds the preview
 DIM preview_box as Slice Ptr
@@ -1757,6 +1787,10 @@ DO
     atk_edit_pushptr state, laststate, menudepth
     setactivemenu workmenu(), effectsMenu(), state
     helpkey = "attack_effects"
+   CASE AtkMiscAct 
+   atk_edit_pushptr state, laststate, menudepth
+   setactivemenu workmenu(), MiscMenu(), state
+   helpkey = "Misc"	
   END SELECT
  END IF
 

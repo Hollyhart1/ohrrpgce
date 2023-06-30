@@ -4561,6 +4561,48 @@ end</example>
 		</section>		<!-- Out-of-battle Attacks-->
 
 	</section>
+	
+	<section title="Attack Data"> 
+		<command id="getattackname">
+			<alias>readattackname</alias>
+			<shortname>get attack name</shortname>
+		</command>
+		<command id="readattackname">
+			<canon>read attack name (ID, attack)</canon>
+			<shortname>read attack name</shortname>
+			<description>This command will take the name of <p>attack</p> and stick it in string #<p>ID</p>, overwriting its contents. Use the <p>atk:name</p> constants from your HSI file.
+			<note>If you want to use this command with attack ID numbers, you must add 1 to the ID number.</note>
+			<note>This command replaces the old <p>get attack name</p> which required you to use <p>atk:name -- 2</p> or the attack id number <p>-- 1</p></note>
+			</description>
+		</command>
+		<command id="getattackcaption">
+			<canon>get attack caption (ID, attack)</canon>
+			<shortname>get attack caption</shortname>
+			<description>This command will take the caption of <p>attack</p> and stick it in string #<p>ID</p>, overwriting its contents. Use the <p>atk:name</p> constants from your HSI file.
+			<note>If you want to use this command with attack ID numbers, you must add 1 to the ID number.</note>
+			</description>
+		</command>
+		<command id="getstatname">
+			<canon>get stat name (ID, stat)</canon>
+			<shortname>get stat name</shortname>
+			<description>
+				Gets the name of a <p>stat</p> and puts it in string #<p>ID</p>.
+				The <p>stat</p> index can be a constant like <tt>stat:hp</tt> for stats 0-11 (but beware the names of these change to match the stats so are no use for portable scripts) or an in-battle register stat (stats 12-15 for poison, regen, stun and mute registers).
+				<lb/>
+				Safe to use with an out-of-range <p>stat</p>: returns <tt>false</tt> and sets a blank string without showing an error.
+				Otherwise returns <tt>true</tt>.
+			</description>
+		</command>
+		<command id="getattackextra">
+		<canon>get attack extra (attack name, extra num)</canon>
+		<shortname>get attack extra</shortname>
+		<description>
+			Returns the value in one of a attack's "extra data" fields, which you can set in the misc editor.
+			<p>extra num</p> is an <ref>extradataindex</ref>.
+			<lb/>
+			This command is the same as <ref>getextra</ref> but only works on attacks, and accepts attack names.
+		</description>
+	</section>
 
 	<section title="Enemy and Formation Functions">
 		<command id="getenemystat">
@@ -5833,37 +5875,7 @@ get hero name (1, find hero (leader))
 			<shortname>get map name</shortname>
 			<description>This command will take the name of map #<p>map</p> and stick it in string #<p>ID</p>, overwriting its contents.</description>
 		</command>
-		<command id="getattackname">
-			<alias>readattackname</alias>
-			<shortname>get attack name</shortname>
-		</command>
-		<command id="readattackname">
-			<canon>read attack name (ID, attack)</canon>
-			<shortname>read attack name</shortname>
-			<description>This command will take the name of <p>attack</p> and stick it in string #<p>ID</p>, overwriting its contents. Use the <p>atk:name</p> constants from your HSI file.
-			<note>If you want to use this command with attack ID numbers, you must add 1 to the ID number.</note>
-			<note>This command replaces the old <p>get attack name</p> which required you to use <p>atk:name -- 2</p> or the attack id number <p>-- 1</p></note>
-			</description>
-		</command>
-		<command id="getattackcaption">
-			<canon>get attack caption (ID, attack)</canon>
-			<shortname>get attack caption</shortname>
-			<description>This command will take the caption of <p>attack</p> and stick it in string #<p>ID</p>, overwriting its contents. Use the <p>atk:name</p> constants from your HSI file.
-			<note>If you want to use this command with attack ID numbers, you must add 1 to the ID number.</note>
-			</description>
-		</command>
-		<command id="getstatname">
-			<canon>get stat name (ID, stat)</canon>
-			<shortname>get stat name</shortname>
-			<description>
-				Gets the name of a <p>stat</p> and puts it in string #<p>ID</p>.
-				The <p>stat</p> index can be a constant like <tt>stat:hp</tt> for stats 0-11 (but beware the names of these change to match the stats so are no use for portable scripts) or an in-battle register stat (stats 12-15 for poison, regen, stun and mute registers).
-				<lb/>
-				Safe to use with an out-of-range <p>stat</p>: returns <tt>false</tt> and sets a blank string without showing an error.
-				Otherwise returns <tt>true</tt>.
-			</description>
-		</command>
-		<command id="getsongname">
+			<command id="getsongname">
 			<canon>get song name (ID, song)</canon>
 			<shortname>get song name</shortname>
 			<description>Gets the name of song #<p>song</p> and puts it in string #<p>ID</p>.</description>
