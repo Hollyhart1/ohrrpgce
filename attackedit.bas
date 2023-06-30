@@ -1406,10 +1406,11 @@ effectsMenu(3) = AtkChangeDefector
 effectsMenu(4) = AtkChangeFlipped
 effectsMenu(5) = AtkSpawnEnemy
 
-DIM MiscMenu(2) as integer
-MiscMenu(0) = AtkExtraAct0
-Miscmenu(1) = AtkExtraAct1
-Miscmenu(2) = AtkExtraAct2
+DIM MiscMenu(3) as integer
+MiscMenu(0) = AtkBackAct
+MiscMenu(1) = AtkExtraAct0
+Miscmenu(2) = AtkExtraAct1
+Miscmenu(3) = AtkExtraAct2
 
 '--Create the box that holds the preview
 DIM preview_box as Slice Ptr
